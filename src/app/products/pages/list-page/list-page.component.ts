@@ -41,7 +41,7 @@ export class ListPageComponent implements OnInit {
   public isLoading: boolean = true;
 
   ngOnInit(): void {
-    this.getProducts();
+    setTimeout(() => this.getProducts(), 1000);
   }
 
   public getProducts() {
