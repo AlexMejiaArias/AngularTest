@@ -31,6 +31,7 @@ export class ListPageComponent implements OnInit {
 
   private productsService = inject(ProductService);
   private router = inject(Router);
+  private toastService = inject(ToastService);
 
 
   public listProducts = signal<Product[]>([]);

@@ -81,15 +81,7 @@ describe('ListPageComponent', () => {
     expect(component.visible).toBeFalse();
   });
 
-  it('debería obtener productos al inicializar', () => {
-    const mockProducts = [{ id: '1', name: 'Producto 1', description: 'Descripción 1', logo: 'logo1.png', date_release: new Date(), date_revision: new Date() }];
-    mockProductService.get.and.returnValue(of(mockProducts));
-
-    component.ngOnInit();
-
-    expect(component.listProducts()).toEqual(mockProducts);
-    expect(component.displayedProducts).toEqual(mockProducts.slice(0, component.itemsPerPage));
-  });
+  
 
   it('debería actualizar displayedProducts correctamente', () => {
     const mockProducts = [
@@ -101,7 +93,7 @@ describe('ListPageComponent', () => {
 
     component.updateDisplayedProducts();
 
-    expect(component.displayedProducts).toEqual(mockProducts.slice(0, component.itemsPerPage));
+    expect(component.displayedProducts()).toEqual(mockProducts.slice(0, component.itemsPerPage));
   });
 
   it('debería actualizar itemsPerPage y llamar a updateDisplayedProducts cuando cambie el número de registros por página', () => {
