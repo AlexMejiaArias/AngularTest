@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../components/button/button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputSearchDebouncedComponent } from '../../components/input-search-debounced/input-search-debounced.component';
 import { ValidationService } from '../../../helpers/validation.service';
 import { CommonModule } from '@angular/common';
 import { dateValidator } from '../../../helpers/custumValidations/validations';
@@ -10,12 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../interfaces/Products';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../services/product.service';
+import { ToastService } from '../../../../shared/services/toast.service';
 
 
 @Component({
   selector: 'app-save-edit-page',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule, InputSearchDebouncedComponent, CommonModule, HttpClientModule],
+  imports: [ButtonComponent, ReactiveFormsModule, CommonModule, HttpClientModule],
   templateUrl: './save-edit-page.component.html',
   styleUrl: './save-edit-page.component.css'
 })
@@ -32,7 +32,9 @@ export class SaveEditPageComponent implements OnInit {
     private fb: FormBuilder,
     private validationService: ValidationService,
     private productsService: ProductService,
-    private router: Router) {
+    private router: Router,
+    private toastService: ToastService
+  ) {
 
     this.projectForm = this.fb.group({
       id: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
@@ -46,7 +48,7 @@ export class SaveEditPageComponent implements OnInit {
 
 
   }
-  
+
   ngOnInit(): void {
     if (this.router.url.includes('edit')) {
       this.labelButton = 'Editar';
@@ -103,9 +105,11 @@ export class SaveEditPageComponent implements OnInit {
 
 
   public saveProject(data: Product): void {
+
     this.productsService.post(data).pipe(
       catchError((err) => {
-        console.log(err);
+        this.toastService.error('Error al enviar el producto');
+        console.log(err)
         return EMPTY
       })
     )
@@ -118,7 +122,7 @@ export class SaveEditPageComponent implements OnInit {
   public editProject(data: Product): void {
     this.productsService.put(data).pipe(
       catchError((err) => {
-        console.log(err);
+        this.toastService.error('Error al editar el producto');
         return EMPTY
       })
     )

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../services/product.service';
 import { SqueletonComponent } from '../../components/squeleton/squeleton.component';
 import { catchError, EMPTY } from 'rxjs';
+import { ToastService } from '../../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-list-page',
