@@ -41,7 +41,10 @@ describe('ProductService', () => {
             );
 
             const req = httpMock.expectOne(`${API_URL}/products`);
-            req.error(new ErrorEvent('Network error'));
+            req.flush(
+                { message: 'Error de prueba' },  // cuerpo de la respuesta de error
+                { status: 500, statusText: 'Internal Server Error' }
+            );
         });
 
         it('debería emitir null como valor inicial de currentProduct', () => {
