@@ -1,0 +1,14 @@
+<div class="modal-overlay" *ngIf="visible">
+    <div class="modal-container">
+        <div class="modal-items-container">
+            <span class="modal-title">{{message}}</span>
+            <div style="width: 100%">
+                <hr>
+                <div class="modal-buttom-container">
+                    <app-button labelButton="Cancelar" severity="info" (clicked)="reject()" />
+                    <app-button labelButton="Confirmar" severity="primary" (clicked)="accept()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

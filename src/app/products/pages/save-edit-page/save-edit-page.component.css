@@ -1,0 +1,66 @@
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    background-color: white;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleFrom {
+    text-align: center;
+    font-weight: 600;
+    font-size: 35px;
+    padding: 10px;
+}
+
+.separationLine {
+    border: 1px solid black
+}
+
+
+.formContainer {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 70px;
+    margin-bottom: 40px;
+}
+
+.itemContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+
+.label {
+    font-weight: 600;
+}
+
+.messageValidation {
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        width: 90%;
+
+    }
+}

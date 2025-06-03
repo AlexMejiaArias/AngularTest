@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <button (click)="toggleMenu()" class="dropdown-toggle">
+        <div class="three-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </button>
+    <ul class="dropdown-menu" [class.show]="isOpen">
+        <li *ngFor="let item of menuItems" (click)="selectItem(item)" (click)="item.action()">
+            {{ item.label }}
+        </li>
+    </ul>
+</div>

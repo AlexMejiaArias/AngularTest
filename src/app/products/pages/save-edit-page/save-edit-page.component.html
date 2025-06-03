@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="form-container">
+        <div>
+            <div class="titleFrom">
+                <span>Formulario de Registro</span>
+            </div>
+            <div>
+                <hr class="separationLine">
+            </div>
+        </div>
+
+        <form [formGroup]="projectForm" (ngSubmit)="saveEditProject()">
+            <div class="formContainer">
+                <div class="itemContainer">
+                    <label class="label">ID</label>
+                    <input class="input-container" #idProd (blur)="validateId(idProd.value)"
+                        [class.inputError]="isValidField('id')|| idUnique" type="text" placeholder="ID"
+                        formControlName="id">
+                    <small class="messageValidation" *ngIf="isValidField('id')">{{getFieldError('id')}}</small>
+                    <small class="messageValidation" *ngIf="idUnique">El id ya existe,use otro</small>
+                </div>
+
+                <div class="itemContainer">
+                    <label class="label">Nombre</label>
+                    <input class="input-container" [class.inputError]="isValidField('name')" type="text"
+                        placeholder="Tarjeta de Crédito" formControlName="name">
+                    <small class="messageValidation" *ngIf="isValidField('name')">{{getFieldError('name')}}</small>
+                </div>
+                <div class="itemContainer">
+                    <label class="label">Descripcion</label>
+                    <input class="input-container" [class.inputError]="isValidField('description')" type="text"
+                        placeholder="Descripción" formControlName="description">
+                    <small class="messageValidation"
+                        *ngIf="isValidField('description')">{{getFieldError('description')}}</small>
+                </div>
+
+                <div class="itemContainer">
+                    <label class="label">Logo</label>
+                    <input class="input-container" [class.inputError]="isValidField('logo')" type="text"
+                        placeholder="www.image.png" formControlName="logo">
+                    <small class="messageValidation" *ngIf="isValidField('logo')">{{getFieldError('logo')}}</small>
+                </div>
+
+                <div class="itemContainer">
+                    <label class="label">Fecha Liberacion</label>
+                    <input class="input-container" [class.inputError]="isValidField('date_release')"
+                        (ngModelChange)="onNewDateRevision($event)" type="date" formControlName="date_release">
+                    <small class="messageValidation"
+                        *ngIf="isValidField('date_release')">{{getFieldError('date_release')}}</small>
+                </div>
+
+                <div class="itemContainer">
+                    <label class=" label">Fecha de revicion</label>
+                    <input class="input-container" type="date" formControlName="date_revision"
+                        [class.inputError]="isValidField('date_revision')">
+                    <small class="messageValidation"
+                        *ngIf="isValidField('date_revision')">{{getFieldError('date_revision')}}</small>
+                </div>
+            </div>
+
+            <div class="buttonContainer">
+                <app-button labelButton="Reiniciar" severity="info" (click)="cleanProjectForm()" />
+                <app-button [labelButton]="labelButton" typeInput="submit" severity="primary"
+                    [disabled]="projectForm.invalid  || idUnique" />
+            </div>
+        </form>
+
+    </div>
+
+</div>

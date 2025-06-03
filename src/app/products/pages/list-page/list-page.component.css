@@ -1,0 +1,95 @@
+.mainContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.tableContainer {
+    width: 90%;
+    justify-content: center;
+    overflow: auto;
+}
+
+.textEnd {
+    text-align: end;
+}
+
+.toolbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tableProducts {
+    padding: 20px;
+    background-color: white;
+    overflow: auto;
+}
+
+.squeletonContianer {
+    height: 300px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow: auto;
+}
+
+th,
+td {
+    border-bottom: 1.5px solid #f7f4f4;
+    text-align: left;
+    max-width: 180px;
+    min-width: 180px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+}
+
+.textElipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+th {
+    background-color: var(--primaryColor);
+    font-weight: 600;
+}
+
+.fontBoldMedium {
+    font-weight: 500;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.centerLogo {
+    text-align: center;
+}
+
+.logo-cell {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+
+.footerTableContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.containerToolbar {
+    display: flex;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,59 @@
+<div class="mainContainer">
+
+    <div class="tableContainer">
+        <div class="toolbarContainer">
+            <app-input-search-debounced placeholder="Buscar.." (onSearch)="searchDebounced($event)" />
+            <app-button labelButton="Agregar" (clicked)="goToAddProduct()" severity="primary" />
+        </div>
+
+        <div class="tableProducts">
+            <div *ngIf="isLoading" class="squeletonContianer">
+                <app-squeleton [visible]="true" />
+            </div>
+
+            <table *ngIf="!isLoading">
+                <thead>
+                    <tr>
+                        <th class="textCenter">Logo</th>
+                        <th>Nombre del producto</th>
+                        <th>Descripción</th>
+                        <th>Fecha de liberación</th>
+                        <th>Fecha de reestructuración</th>
+                        <th></th>
+                    </tr>  
+
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let product of displayedProducts()">
+                        <td class="centerLogo">
+                            <img src="{{product.logo}}" alt="{{product.name}}" class="logo-cell">
+                        </td>
+                        <td>{{product.name}} </td>
+                        <td class="textElipsis">{{product.description}}</td>
+                        <td>{{product.date_release | date:'dd/MM/yyyy'}}</td>
+                        <td>{{product.date_revision | date:'dd/MM/yyyy'}}</td>
+                        <td class="textEnd">
+                            <app-dropdown-menu [menuItems]="getMenuItems(product)" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="footerTableContainer">
+                <span class="fontBoldMedium">{{displayedProducts().length}} Resultados</span>
+                <div>
+                    <select (change)="onRecordsPerPageChange($event)">
+                        <option value="5"> 5 </option>
+                        <option value="10"> 10 </option>
+                        <option value="15"> 15 </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--Dialog-->
+        <app-dialog [message]="messageDelete" [visible]="visible" (onReject)="toogleModal()"
+            (onAccept)="deleteProduct()" />
+    </div>
+</div>
