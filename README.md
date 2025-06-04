@@ -15,3 +15,9 @@ Run `npm install -g @angular/cli` for intall angular.
 
 3. **Enjoy** 😅
 
+
+## Note
+
+2. **Run test**  
+   Run `ng test`.
+
